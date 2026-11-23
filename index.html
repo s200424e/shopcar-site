@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Shopcar Veículos | Seminovos em Taguatinga, Brasília/DF</title>
+  <meta name="description" content="Carros seminovos em Taguatinga, Brasília/DF. Estoque com Onix, HB20S, Civic, Corolla, Renegade e mais. Financiamento em até 60x, análise de crédito sem custo e seu usado na troca.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Shopcar Veículos | Seminovos em Taguatinga">
+  <meta property="og:description" content="Seminovos selecionados, financiamento facilitado e avaliação do seu usado na troca. Realizando sonhos.">
+  <meta property="og:image" content="img/hero/showroom-renegade.jpg">
+  <meta name="theme-color" content="#0b0c0e">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,500..900&family=Bebas+Neue&family=Work+Sans:wght@300..600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="preload" as="image" href="img/hero/showroom-renegade.jpg">
+</head>
+<body data-page="home">
+<main>
+
+  <!-- HERO -->
+  <section class="hero" aria-roledescription="carrossel" aria-label="Destaques da Shopcar">
+    <div class="hero__track" id="heroTrack"></div>
+    <div class="hero__controls">
+      <div class="hero__count"><span id="heroNow">01</span><i></i><span id="heroTotal">04</span></div>
+      <div class="hero__dots" id="heroDots"></div>
+      <div class="hero__arrows">
+        <button class="icon-btn" data-hero="-1" aria-label="Destaque anterior"></button>
+        <button class="icon-btn" data-hero="1" aria-label="Próximo destaque"></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- BUSCA RÁPIDA -->
+  <div class="quick">
+    <form class="container quick__box" action="estoque.html" id="quickForm">
+      <div class="quick__field"><label for="qMarca">Marca</label><select id="qMarca" name="marca"><option value="">Todas</option></select></div>
+      <div class="quick__field"><label for="qTipo">Carroceria</label><select id="qTipo" name="tipo"><option value="">Todas</option></select></div>
+      <div class="quick__field"><label for="qFaixa">Preço</label><select id="qFaixa" name="faixa"><option value="">Qualquer valor</option></select></div>
+      <div class="quick__field"><label for="qCambio">Câmbio</label><select id="qCambio" name="cambio"><option value="">Todos</option><option>Manual</option><option>Automático</option></select></div>
+      <button class="btn btn--primary" type="submit"><span id="quickCount">Buscar</span></button>
+    </form>
+  </div>
+
+  <!-- RECÉM-CHEGADOS -->
+  <section class="section" id="chegados">
+    <div class="container section-head">
+      <div class="section-head__text reveal">
+        <span class="eyebrow">Acabaram de chegar</span>
+        <h2 class="t-h2">Recém-chegados</h2>
+        <p class="lead">Os últimos carros que entraram no showroom. Arraste para ver e fale direto com a gente pelo WhatsApp de cada anúncio.</p>
+      </div>
+      <div class="section-head__side reveal reveal-d1">
+        <button class="icon-btn" data-rail-prev aria-label="Anteriores"></button>
+        <button class="icon-btn" data-rail-next aria-label="Próximos"></button>
+        <a class="btn btn--outline btn--sm" href="estoque.html">Ver estoque completo</a>
+      </div>
+    </div>
+    <div class="rail reveal reveal-d2">
+      <div class="rail__track" id="railChegados"></div>
+      <div class="rail__progress"><i></i></div>
+    </div>
+  </section>
+
+  <!-- MARCAS -->
+  <section class="section section--alt" id="marcas">
+    <div class="container">
+      <div class="section-head">
+        <div class="section-head__text reveal">
+          <span class="eyebrow">Multimarcas</span>
+          <h2 class="t-h2">Escolha pela marca</h2>
+          <p class="lead">Dos populares aos sedãs e picapes. Todas as marcas do nosso estoque, num só endereço em Taguatinga.</p>
+        </div>
+        <a class="link-arrow reveal" href="estoque.html">Ver estoque completo <span data-icon="arrow"></span></a>
+      </div>
+      <div class="brands reveal" id="brandGrid"></div>
+      <div class="chip-row reveal" id="tipoChips"><span>Por carroceria</span></div>
+    </div>
+  </section>
+
+  <!-- FAIXAS DE PREÇO -->
+  <section class="section" id="faixas">
+    <div class="container">
+      <div class="section-head">
+        <div class="section-head__text reveal">
+          <span class="eyebrow">Cabe no bolso</span>
+          <h2 class="t-h2">Busque pelo seu orçamento</h2>
+        </div>
+      </div>
+      <div class="price-tiles" id="priceTiles"></div>
+    </div>
+  </section>
+
+  <!-- FINANCIAMENTO -->
+  <section class="section section--alt bg-grid" id="financiamento">
+    <div class="container split">
+      <div class="split__text reveal">
+        <span class="eyebrow">Financiamento</span>
+        <h2 class="t-h2">Saia <span class="accent">dirigindo</span> com parcelas que cabem</h2>
+        <p class="lead">Simulamos com os principais bancos para encontrar a melhor condição para você. Seu usado pode entrar como parte do pagamento.</p>
+        <ul class="checks">
+          <li><span data-icon="check"></span>Análise de crédito sem custo</li>
+          <li><span data-icon="check"></span>Aprovação rápida</li>
+          <li><span data-icon="check"></span>Parcelamento em até 60x</li>
+          <li><span data-icon="check"></span>Seu usado como entrada</li>
+        </ul>
+      </div>
+      <form class="sim reveal reveal-d1" id="simForm" novalidate>
+        <div class="sim__head"><span class="t-h3">Simule agora</span><span class="eyebrow">Sem compromisso</span></div>
+        <div class="field">
+          <label for="simCarro">Veículo de interesse</label>
+          <select class="select" id="simCarro"><option value="">Ainda não escolhi</option></select>
+        </div>
+        <div class="field">
+          <div class="field__label"><label for="simValor">Valor do veículo</label><output id="simValorOut"></output></div>
+          <input class="range" type="range" id="simValor" min="15000" max="200000" step="500" value="60000">
+        </div>
+        <div class="field">
+          <div class="field__label"><label for="simEntrada">Entrada</label><output id="simEntradaOut"></output></div>
+          <input class="range" type="range" id="simEntrada" min="0" max="100" step="5" value="30">
+        </div>
+        <div class="field">
+          <span class="field__label">Parcelas</span>
+          <div class="seg" role="radiogroup" aria-label="Número de parcelas" id="simParc">
+            <button type="button" role="radio" aria-checked="false">24x</button>
+            <button type="button" role="radio" aria-checked="false">36x</button>
+            <button type="button" role="radio" aria-checked="true" class="is-on">48x</button>
+            <button type="button" role="radio" aria-checked="false">60x</button>
+          </div>
+        </div>
+        <div class="sim__summary">
+          <div><small>Valor a financiar</small><span class="t-price" id="simFin">—</span></div>
+          <div><small>Entrada</small><span class="t-price" id="simEnt">—</span></div>
+        </div>
+        <p class="sim__note">A taxa e o valor da parcela dependem da análise de crédito. Enviamos a proposta pelo WhatsApp.</p>
+        <button class="btn btn--wa btn--block" type="submit"><span data-icon="wa"></span> Receber simulação no WhatsApp</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- VENDA / TROCA -->
+  <section class="section" id="venda">
+    <div class="container split">
+      <div class="split__media reveal">
+        <img src="img/hero/tiggo8.jpg" alt="Showroom da Shopcar Veículos em Taguatinga" loading="lazy">
+        <div class="split__badge"><b>3</b><span>passos para vender<br>ou trocar o seu carro</span></div>
+      </div>
+      <div class="split__text reveal reveal-d1">
+        <span class="eyebrow">Venda ou troca</span>
+        <h2 class="t-h2">Seu carro vale mais aqui</h2>
+        <p class="lead">Avaliação justa e transparente. Venda com segurança ou use o seu carro como entrada no próximo.</p>
+        <ol class="steps">
+          <li><span class="steps__n">01</span><div><h3>Mande os dados pelo WhatsApp</h3><p>Modelo, ano, quilometragem e algumas fotos. Leva poucos minutos.</p></div></li>
+          <li><span class="steps__n">02</span><div><h3>Avaliação na loja</h3><p>Nossa equipe confere o carro e o valor de mercado na hora.</p></div></li>
+          <li><span class="steps__n">03</span><div><h3>Proposta e fechamento</h3><p>Pagamento ágil ou o valor abatido direto no seu próximo carro.</p></div></li>
+        </ol>
+        <div><a class="btn btn--primary" id="vendaCta" target="_blank" rel="noopener"><span data-icon="wa"></span> Avaliar meu carro</a></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOBRE -->
+  <section class="section section--alt bg-grid" id="sobre">
+    <div class="container">
+      <div class="section-head">
+        <div class="section-head__text reveal">
+          <span class="eyebrow">A Shopcar</span>
+          <h2 class="t-h2">Realizando sonhos em Taguatinga</h2>
+          <p class="lead">Showroom coberto em frente ao JK Shopping, com seminovos selecionados de várias marcas e atendimento direto, do primeiro contato até a entrega das chaves.</p>
+        </div>
+      </div>
+      <div class="stats reveal" id="stats"></div>
+      <div class="why">
+        <div class="why__item reveal"><span data-icon="shield"></span><h3>Procedência conferida</h3><p>Documentação verificada antes de cada carro ir para o showroom.</p></div>
+        <div class="why__item reveal reveal-d1"><span data-icon="money"></span><h3>Crédito facilitado</h3><p>Análise sem custo e aprovação rápida com os principais bancos.</p></div>
+        <div class="why__item reveal reveal-d2"><span data-icon="swap"></span><h3>Aceitamos seu usado</h3><p>Seu carro entra como parte do pagamento, com avaliação justa.</p></div>
+        <div class="why__item reveal reveal-d3"><span data-icon="chat"></span><h3>Atendimento direto</h3><p>Fale com a loja pelo WhatsApp e agende sua visita ou test drive.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INSTAGRAM -->
+  <section class="section" id="instagram">
+    <div class="container insta">
+      <div class="split__text reveal">
+        <span class="eyebrow">Instagram</span>
+        <h2 class="t-h2">Siga a Shopcar</h2>
+        <p class="lead">Novidades do estoque, entregas e ofertas primeiro no nosso Instagram.</p>
+        <div><a class="btn btn--outline" id="instaCta" target="_blank" rel="noopener"><span data-icon="insta"></span> <span id="instaUser"></span></a></div>
+      </div>
+      <div class="insta__grid reveal reveal-d1" id="instaGrid"></div>
+    </div>
+  </section>
+
+  <!-- LOJA -->
+  <section class="section section--alt" id="loja">
+    <div class="container">
+      <div class="section-head">
+        <div class="section-head__text reveal">
+          <span class="eyebrow">Endereço</span>
+          <h2 class="t-h2">Visite a loja</h2>
+          <p class="lead">Venha conhecer o estoque pessoalmente, tomar um café e fazer o seu test drive.</p>
+        </div>
+      </div>
+      <div class="store reveal" id="store"></div>
+    </div>
+  </section>
+
+</main>
+
+<script src="js/loja.js"></script>
+<script src="js/estoque.js"></script>
+<script src="js/main.js"></script>
+<script src="js/home.js"></script>
+</body>
+</html>

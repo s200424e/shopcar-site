@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Veículo | Shopcar Veículos</title>
+  <meta name="description" content="Seminovo à venda na Shopcar Veículos, Taguatinga, Brasília/DF.">
+  <meta name="theme-color" content="#0b0c0e">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,500..900&family=Bebas+Neue&family=Work+Sans:wght@300..600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="veiculo">
+<main>
+  <div class="container vd" id="vd"></div>
+
+  <section class="section section--alt" id="relacionados" hidden>
+    <div class="container section-head">
+      <div class="section-head__text">
+        <span class="eyebrow">Você também pode gostar</span>
+        <h2 class="t-h2">Parecidos com este</h2>
+      </div>
+      <div class="section-head__side">
+        <button class="icon-btn" data-rail-prev aria-label="Anteriores"></button>
+        <button class="icon-btn" data-rail-next aria-label="Próximos"></button>
+        <a class="btn btn--outline btn--sm" href="estoque.html">Ver estoque</a>
+      </div>
+    </div>
+    <div class="rail">
+      <div class="rail__track" id="railRel"></div>
+      <div class="rail__progress"><i></i></div>
+    </div>
+  </section>
+</main>
+
+<div class="lightbox" id="lightbox" role="dialog" aria-label="Fotos do veículo">
+  <button class="icon-btn lightbox__close" data-lb="close" aria-label="Fechar"></button>
+  <button class="gallery__nav gallery__nav--prev" data-lb="-1" aria-label="Foto anterior"></button>
+  <img alt="">
+  <button class="gallery__nav gallery__nav--next" data-lb="1" aria-label="Próxima foto"></button>
+  <span class="lightbox__count"></span>
+</div>
+
+<script src="js/loja.js"></script>
+<script src="js/estoque.js"></script>
+<script src="js/main.js"></script>
+<script src="js/veiculo.js"></script>
+</body>
+</html>

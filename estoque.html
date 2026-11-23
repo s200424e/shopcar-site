@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Estoque de seminovos | Shopcar Veículos, Taguatinga DF</title>
+  <meta name="description" content="Veja todos os carros seminovos da Shopcar Veículos em Taguatinga, Brasília/DF. Filtre por marca, carroceria, preço, ano e câmbio.">
+  <meta property="og:title" content="Estoque | Shopcar Veículos">
+  <meta property="og:description" content="Seminovos selecionados em Taguatinga, Brasília/DF.">
+  <meta property="og:image" content="img/hero/showroom-renegade.jpg">
+  <meta name="theme-color" content="#0b0c0e">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,500..900&family=Bebas+Neue&family=Work+Sans:wght@300..600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="estoque">
+<main>
+  <section class="page-hero">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Você está em"><a href="index.html">Início</a><span>/</span><span>Estoque</span></nav>
+      <h1 class="t-display">Estoque</h1>
+      <p class="lead" id="heroLead">Seminovos selecionados no nosso showroom em Taguatinga.</p>
+    </div>
+  </section>
+
+  <div class="container inv">
+    <aside class="filters" id="filters" aria-label="Filtros">
+      <div class="filters__head"><span class="t-h3">Filtros</span><button class="icon-btn" data-close-filters aria-label="Fechar filtros"></button></div>
+      <div class="filter-group">
+        <label class="filter-group__title" for="fQ">Buscar</label>
+        <input class="input" id="fQ" type="search" placeholder="Modelo, versão, cor..." autocomplete="off">
+      </div>
+      <div class="filter-group"><span class="filter-group__title">Carroceria</span><div class="chips" id="fTipo"></div></div>
+      <div class="filter-group"><span class="filter-group__title">Marca</span><div class="chips" id="fMarca"></div></div>
+      <div class="filter-group"><span class="filter-group__title">Faixa de preço</span><div class="chips" id="fFaixa"></div></div>
+      <div class="filter-group">
+        <span class="filter-group__title">Preço (R$)</span>
+        <div class="two-cols">
+          <input class="input" id="fMin" inputmode="numeric" placeholder="Mínimo" aria-label="Preço mínimo">
+          <input class="input" id="fMax" inputmode="numeric" placeholder="Máximo" aria-label="Preço máximo">
+        </div>
+      </div>
+      <div class="filter-group">
+        <span class="filter-group__title">Ano a partir de</span>
+        <select class="select" id="fAno" aria-label="Ano mínimo"><option value="">Qualquer ano</option></select>
+      </div>
+      <div class="filter-group"><span class="filter-group__title">Câmbio</span><div class="chips" id="fCambio"></div></div>
+      <div class="filter-group"><span class="filter-group__title">Combustível</span><div class="chips" id="fComb"></div></div>
+      <div class="filter-group"><span class="filter-group__title">Outros</span><div class="chips"><button class="chip" id="fFav" type="button">♥ Só favoritos</button></div></div>
+      <button class="btn btn--ghost btn--sm" type="button" id="fLimpar">Limpar filtros</button>
+      <button class="btn btn--primary filters__apply" type="button" data-close-filters id="fAplicar">Ver resultados</button>
+    </aside>
+
+    <div>
+      <div class="inv__bar">
+        <p class="inv__count" id="count" aria-live="polite"></p>
+        <div class="inv__bar-right">
+          <button class="btn btn--ghost btn--sm filters-btn" type="button" data-open-filters>Filtros</button>
+          <select class="select" id="ordem" aria-label="Ordenar por">
+            <option value="recentes">Mais recentes</option>
+            <option value="menor-preco">Menor preço</option>
+            <option value="maior-preco">Maior preço</option>
+            <option value="menor-km">Menor km</option>
+            <option value="mais-novo">Ano mais novo</option>
+          </select>
+        </div>
+      </div>
+      <div class="active-filters" id="ativos"></div>
+      <div class="grid-cars" id="grid"></div>
+    </div>
+  </div>
+</main>
+
+<script src="js/loja.js"></script>
+<script src="js/estoque.js"></script>
+<script src="js/main.js"></script>
+<script src="js/estoque-pagina.js"></script>
+</body>
+</html>
