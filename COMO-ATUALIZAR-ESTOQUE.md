@@ -71,7 +71,7 @@ A ordem da lista é a ordem do site: o primeiro aparece como mais recente.
 ## Temas do mês (Natal e outros)
 
 O site se decora sozinho conforme a época. Hoje existe o tema de **Natal**, que entra em 1º de dezembro e sai depois do dia 25. Ele traz:
-- luzes piscando embaixo do menu e neve no topo das páginas
+- luzes piscando embaixo do menu e neve caindo na página inteira, em todas as páginas
 - um destaque de Natal como primeiro slide da home
 - uma faixa em forma de presente com contagem regressiva
 - o selo "Destaque de Natal" nos carros marcados como destaque

@@ -63,34 +63,40 @@
     alvo.append(box);
   }
 
-  function neve(alvo) {
+  // neve na tela inteira: uma camada fixa por cima da página (não bloqueia cliques),
+  // então neva do topo ao rodapé enquanto a pessoa rola, em todas as páginas
+  function neve() {
     if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     const c = document.createElement("canvas");
     c.className = "tema-neve"; c.setAttribute("aria-hidden", "true");
-    alvo.append(c);
+    document.body.append(c);
     const ctx = c.getContext("2d");
-    let W, H, flocos = [], vivo = true;
+    let W = 0, H = 0, flocos = [], rodando = false;
     const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    const novo = inicio => ({ x: Math.random() * W, y: inicio ? Math.random() * H : -10, r: .8 + Math.random() * 2.4, v: .3 + Math.random() * .85, o: .25 + Math.random() * .5, f: Math.random() * 6.28, a: .4 + Math.random() * .8 });
     const medir = () => {
-      W = c.clientWidth; H = c.clientHeight; c.width = W * dpr; c.height = H * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      const qtd = Math.round(Math.min(110, W / 12));
-      flocos = Array.from({ length: qtd }, () => novo(true));
+      const larguraMudou = window.innerWidth !== W;
+      W = window.innerWidth; H = window.innerHeight;
+      c.width = W * dpr; c.height = H * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      // só recria os flocos se a largura mudar (no celular a barra do navegador muda a altura ao rolar)
+      if (larguraMudou) flocos = Array.from({ length: Math.round(Math.min(140, W / 10)) }, () => novo(true));
     };
-    const novo = inicio => ({ x: Math.random() * W, y: inicio ? Math.random() * H : -10, r: 1 + Math.random() * 2.6, v: .35 + Math.random() * .9, o: .35 + Math.random() * .55, f: Math.random() * 6.28, a: .4 + Math.random() * .8 });
     const passo = () => {
-      if (!vivo) return;
+      if (document.hidden) { rodando = false; return; }
       ctx.clearRect(0, 0, W, H);
       for (const p of flocos) {
         p.y += p.v; p.f += .012; p.x += Math.sin(p.f) * p.a * .5;
         if (p.y > H + 6) Object.assign(p, novo(false));
+        if (p.x > W + 6) p.x = -6; else if (p.x < -6) p.x = W + 6;
         ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, 6.283);
         ctx.fillStyle = `rgba(255,255,255,${p.o})`; ctx.fill();
       }
       requestAnimationFrame(passo);
     };
+    const iniciar = () => { if (!rodando && !document.hidden) { rodando = true; requestAnimationFrame(passo); } };
     medir(); window.addEventListener("resize", medir);
-    document.addEventListener("visibilitychange", () => { vivo = !document.hidden; if (vivo) passo(); });
-    passo();
+    document.addEventListener("visibilitychange", iniciar);
+    iniciar();
   }
 
   function contagem(el, alvo) {
@@ -121,9 +127,8 @@
     // varal de luzes embaixo do menu
     const nav = document.querySelector(".nav-bar");
     if (nav) luzes(nav);
-    // neve no topo da home e no topo das páginas internas
-    const hero = document.querySelector(".hero") || document.querySelector(".page-hero");
-    if (hero) neve(hero);
+    // neve na página inteira
+    neve();
 
     // faixa-presente na home, depois dos recém-chegados
     const depois = document.querySelector("#chegados");
