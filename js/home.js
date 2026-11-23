@@ -37,9 +37,16 @@ document.addEventListener("sc:ready", () => {
     }
   ].filter(Boolean);
 
+  // tema do mês (ex.: Natal) entra como primeiro destaque
+  const TS = window.SC_TEMA && window.SC_TEMA.slide;
+  if (TS) slides.unshift({
+    img: TS.img, eyebrow: TS.eyebrow, titulo: TS.titulo, texto: TS.texto, tema: true,
+    ctas: [[TS.cta[0], TS.cta[1], "primary"], [TS.wa[0], waLink(TS.wa[1]), "outline", true]]
+  });
+
   const track = $("#heroTrack");
   track.innerHTML = slides.map((s, i) => `
-    <div class="hero__slide${i === 0 ? " is-active" : ""}" role="group" aria-roledescription="slide" aria-label="${i + 1} de ${slides.length}">
+    <div class="hero__slide${i === 0 ? " is-active" : ""}${s.tema ? " hero__slide--tema" : ""}" role="group" aria-roledescription="slide" aria-label="${i + 1} de ${slides.length}">
       <div class="hero__media"><img src="${esc(s.img)}" alt="" ${i ? 'loading="lazy"' : 'fetchpriority="high"'}></div>
       <div class="hero__content">
         <span class="eyebrow reveal-up">${s.eyebrow}</span>

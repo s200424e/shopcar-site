@@ -622,3 +622,138 @@ input, select { font: inherit; color: inherit; }
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
   .reveal { opacity: 1; transform: none; }
 }
+
+/* =====================================================================
+   TEMAS SAZONAIS  -  ativados por js/temas.js (classe tema-<nome> no <html>)
+   ===================================================================== */
+
+/* ---------- NATAL ---------- */
+.tema-natal {
+  --ouro: #e9b949;
+  --ouro-escuro: #b8862a;
+  --natal-vermelho: #c8102e;
+  --natal-vermelho-escuro: #7d0a1c;
+  --natal-verde: #1f8a4c;
+}
+.tema-ouro { color: var(--ouro); }
+.tema-natal .eyebrow::before { background: linear-gradient(90deg, var(--natal-vermelho), var(--ouro)); }
+
+/* faixa do topo */
+.tema-faixa { display: inline-flex; align-items: center; gap: .45em; color: #fff; }
+.tema-faixa b { color: var(--ouro); font-weight: 600; }
+@media (max-width: 599px) { .tema-faixa__extra { display: none; } }
+.tema-faixa svg { width: 13px; height: 13px; color: var(--ouro); margin: 0; }
+.tema-natal .utility { background: linear-gradient(90deg, var(--natal-vermelho-escuro), #3a0710 45%, #000 80%); }
+@media (max-width: 1023px) { .tema-natal .utility__group--left > a { display: none; } }
+
+/* varal de luzes */
+.tema-luzes {
+  position: absolute; left: 0; right: 0; top: 100%; height: 26px; pointer-events: none; z-index: 2;
+  display: flex; justify-content: space-between; overflow: hidden;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='46' height='26'%3E%3Cpath d='M0 1 Q23 14 46 1' fill='none' stroke='%23222a22' stroke-width='1.6'/%3E%3C/svg%3E") repeat-x 0 0 / 46px 26px;
+  transition: opacity .35s;
+}
+.header.is-scrolled .tema-luzes { opacity: .9; }
+.tema-luzes i {
+  flex: 0 0 46px; position: relative; display: block;
+}
+.tema-luzes i::before {
+  content: ""; position: absolute; left: 50%; top: 6px; width: 5px; height: 4px; margin-left: -2.5px; background: #2b2f2b; border-radius: 1px;
+}
+.tema-luzes i::after {
+  content: ""; position: absolute; left: 50%; top: 9px; width: 8px; height: 12px; margin-left: -4px;
+  border-radius: 50% 50% 45% 45% / 40% 40% 60% 60%;
+  background: var(--c, var(--ouro)); box-shadow: 0 0 10px 2px var(--c, var(--ouro));
+  animation: pisca 2.4s ease-in-out infinite; animation-delay: var(--d, 0s);
+}
+.tema-luzes i:nth-child(4n+1) { --c: #ff3b4e; }
+.tema-luzes i:nth-child(4n+2) { --c: #ffd35a; }
+.tema-luzes i:nth-child(4n+3) { --c: #3ee07f; }
+.tema-luzes i:nth-child(4n+4) { --c: #4cb2ff; }
+@keyframes pisca { 0%, 100% { opacity: 1; filter: brightness(1.15); } 50% { opacity: .35; filter: brightness(.7); box-shadow: 0 0 2px 0 var(--c); } }
+
+/* neve */
+.tema-neve { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 2; pointer-events: none; }
+.page-hero { position: relative; overflow: hidden; }
+
+/* destaque de Natal no topo da home */
+.hero__slide--tema .hero__media::before {
+  background:
+    radial-gradient(circle at 78% 22%, #e9b94933 0, #0000 30%),
+    linear-gradient(90deg, #2a0309f0 0%, #3a0710c4 30%, #00000040 62%, #0000 85%);
+}
+.hero__slide--tema .hero__media::after {
+  background:
+    radial-gradient(circle at 12% 18%, #ffd35a55 0 2px, #0000 4px),
+    radial-gradient(circle at 34% 10%, #ff3b4e55 0 2px, #0000 4px),
+    radial-gradient(circle at 58% 16%, #ffd35a44 0 3px, #0000 6px),
+    radial-gradient(circle at 86% 8%, #3ee07f44 0 2px, #0000 4px),
+    var(--ov-hero-bottom);
+}
+.hero__slide--tema .btn--primary { background: var(--natal-vermelho); }
+.hero__slide--tema .btn--primary:hover { background: #e0213f; }
+
+/* selo nos cards */
+.tag--tema { background: var(--natal-vermelho); color: #fff; box-shadow: inset 0 -2px 0 var(--ouro); }
+
+/* faixa-presente */
+.tema-banner { padding-block: calc(var(--section-y) * .55); }
+.tema-presente {
+  position: relative; overflow: hidden; isolation: isolate; border-radius: var(--radius);
+  display: grid; grid-template-columns: 1.4fr 1fr; gap: clamp(2rem, 1rem + 3vw, 4rem); align-items: center;
+  padding: clamp(2.25rem, 1.5rem + 3vw, 4.5rem);
+  background:
+    radial-gradient(circle at 85% 20%, #ff5a6a33 0, #0000 40%),
+    linear-gradient(135deg, #8e0c20 0%, var(--natal-vermelho-escuro) 55%, #4a0612 100%);
+  border: 1px solid #ffffff1f;
+}
+.tema-presente::before {
+  content: ""; position: absolute; inset: 0; z-index: -1; opacity: .35;
+  background:
+    radial-gradient(circle, #ffffff40 0 1.5px, #0000 2px) 0 0 / 38px 38px,
+    radial-gradient(circle, #ffd35a40 0 1px, #0000 1.6px) 19px 19px / 38px 38px;
+}
+.tema-presente__fita {
+  position: absolute; z-index: -1; top: 0; bottom: 0; left: 62%; width: 46px;
+  background: linear-gradient(90deg, var(--ouro-escuro), var(--ouro) 30%, #f6d57e 50%, var(--ouro) 70%, var(--ouro-escuro));
+  box-shadow: 0 0 30px #0006;
+}
+.tema-presente__fita--h { top: 18px; bottom: auto; left: 0; right: 0; width: auto; height: 36px;
+  background: linear-gradient(180deg, var(--ouro-escuro), var(--ouro) 30%, #f6d57e 50%, var(--ouro) 70%, var(--ouro-escuro)); }
+.tema-laco { position: absolute; z-index: 0; left: calc(62% + 23px - 75px); top: -9px; width: 150px; filter: drop-shadow(0 6px 10px #0007); }
+.tema-presente__texto { position: relative; z-index: 1; display: grid; gap: 1.1rem; justify-items: start; }
+.tema-presente .eyebrow { color: #ffffffd0; }
+.tema-presente .eyebrow::before { background: var(--ouro); }
+.tema-presente .lead { color: #ffffffd9; }
+.tema-presente .btn--outline { color: #fff; }
+.tema-presente .btn--outline::before { background: #fff; }
+.tema-presente .btn--outline:hover { color: var(--natal-vermelho-escuro); }
+.tema-presente__cd {
+  justify-self: end; position: relative; z-index: 1; padding: 1.5rem 1.6rem; border-radius: var(--radius);
+  background: #1a0307cc; border: 1px solid #e9b94966; backdrop-filter: blur(6px); text-align: center;
+}
+.tema-cd__titulo { display: block; font-size: var(--fs-label); letter-spacing: .2em; text-transform: uppercase; color: var(--ouro); font-weight: 600; margin-bottom: 1rem; }
+.tema-cd { display: grid; grid-template-columns: repeat(4, minmax(58px, 1fr)); gap: .5rem; }
+.tema-cd div { display: grid; gap: .2rem; padding: .6rem .4rem; background: #ffffff0d; border-radius: var(--radius); }
+.tema-cd b { font-family: var(--ff-price); font-weight: 400; font-size: clamp(2rem, 1.5rem + 1.2vw, 2.8rem); line-height: 1; color: #fff; }
+.tema-cd span { font-size: .66rem; letter-spacing: .16em; text-transform: uppercase; color: #ffffffa6; }
+.tema-cd__fim { grid-column: 1 / -1; font-family: var(--ff-display); font-weight: 800; font-stretch: 125%; text-transform: uppercase; font-size: 1.6rem; color: var(--ouro); }
+
+/* recado no rodapé */
+.tema-rodape { display: flex; align-items: center; gap: .6rem; justify-content: center; margin: 0; padding: 1.25rem 0 0; color: var(--ouro); font-size: .9rem; }
+.tema-rodape svg { width: 18px; height: 18px; flex: none; }
+
+@media (max-width: 1023px) {
+  .tema-presente { grid-template-columns: 1fr; }
+  .tema-presente__cd { justify-self: stretch; }
+  .tema-presente__fita { left: auto; right: 12%; }
+  .tema-presente__fita--h { left: 0; right: 0; width: auto; }
+  .tema-laco { left: auto; right: calc(12% + 23px - 75px); }
+}
+@media (max-width: 599px) {
+  .tema-cd { grid-template-columns: repeat(4, 1fr); }
+  .tema-presente__fita { width: 30px; right: 8%; }
+  .tema-presente__fita--h { height: 26px; top: 14px; left: 0; right: 0; width: auto; }
+  .tema-laco { width: 110px; right: calc(8% + 15px - 55px); top: -6px; }
+}
+@media (prefers-reduced-motion: reduce) { .tema-luzes i::after { animation: none; } }

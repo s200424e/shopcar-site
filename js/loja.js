@@ -23,6 +23,10 @@ window.LOJA = {
     { dias: "Domingo", horas: "Fechado" }
   ],
 
+  // Tema do mês: "auto" (muda sozinho pela data), "natal", ou "nenhum".
+  // Para ver um tema antes da hora, abra o site com ?tema=natal no fim do endereço.
+  tema: "auto",
+
   instagram: "https://www.instagram.com/shopcarveiculos7",
   instagramUsuario: "@shopcarveiculos7",
   facebook: "" // deixe "" para esconder o ícone

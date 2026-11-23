@@ -85,7 +85,8 @@
     const img = capa(v)
       ? `<img src="${esc(capa(v))}" alt="${esc(nome(v))}" loading="lazy" decoding="async">`
       : `<div class="no-photo">Fotos em breve</div>`;
-    const novo = v.anoModelo >= new Date().getFullYear() - 1 ? `<span class="tag tag--blue">Ano recente</span>` : "";
+    const selo = v.destaque && window.SC_TEMA && window.SC_TEMA.selo ? `<span class="tag tag--tema">${esc(window.SC_TEMA.selo)}</span>` : "";
+    const novo = selo || (v.anoModelo >= new Date().getFullYear() - 1 ? `<span class="tag tag--blue">Ano recente</span>` : "");
     return `<article class="car-card">
       <a class="car-card__link" href="${urlVeiculo(v)}" aria-label="${esc(nome(v))}, ${ano(v)}, ${brl(v.preco)}"></a>
       <div class="car-card__media">${img}

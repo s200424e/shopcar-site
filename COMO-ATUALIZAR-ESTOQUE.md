@@ -68,6 +68,24 @@ Regras para não quebrar o site:
 
 A ordem da lista é a ordem do site: o primeiro aparece como mais recente.
 
+## Temas do mês (Natal e outros)
+
+O site se decora sozinho conforme a época. Hoje existe o tema de **Natal**, que entra em 1º de dezembro e sai depois do dia 25. Ele traz:
+- luzes piscando embaixo do menu e neve no topo das páginas
+- um destaque de Natal como primeiro slide da home
+- uma faixa em forma de presente com contagem regressiva
+- o selo "Destaque de Natal" nos carros marcados como destaque
+- um recado de boas festas no rodapé
+
+Para controlar, mude `tema` em `js/loja.js`:
+- `"auto"`: entra e sai sozinho pela data (padrão)
+- `"natal"`: deixa o Natal ligado
+- `"nenhum"`: desliga qualquer tema
+
+Para ver um tema antes da hora, abra o site com `?tema=natal` no fim do endereço. Para voltar ao normal na mesma aba, use `?tema=auto`.
+
+Os textos do tema ficam em `js/temas.js`. Novos temas (Dia dos Pais, Black Friday, feirão...) são criados lá, no mesmo formato do Natal.
+
 ## Conferir antes de publicar
 
 Abra o `index.html` no navegador. Se a home aparecer sem carros, provavelmente falta uma vírgula ou uma aspa no `estoque.js`.
